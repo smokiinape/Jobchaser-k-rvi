@@ -1,0 +1,38 @@
+
+/* Button css */
+.button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+  }
+
+
+
+/*
+Having a separate CSS file for your components can bring several benefits:
+
+Modularity: By keeping the CSS for each component in a separate file, you can isolate the styles specific to that component. This helps to keep your code organized and makes it easier to maintain and update in the future.
+
+Reusability: Separating your CSS into individual files also makes it easier to reuse code across different parts of your project. You can simply import the CSS file for a component whenever you need to use it, rather than having to copy and paste the styles each time.
+
+Scalability: As your project grows, keeping your CSS separate can make it easier to scale and manage. You can add or remove components as needed, without worrying about how it will affect the rest of your styles.
+
+Performance: By separating your CSS into individual files, you can also improve the performance of your website. This is because browsers can cache the CSS for each component separately, meaning that they don't have to re-download the same styles multiple times.
+
+Overall, having a separate CSS file for each component can make your code more organized, reusable, scalable, and performant.
+
+
+*/

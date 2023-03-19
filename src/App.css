@@ -36,3 +36,114 @@
     transform: rotate(360deg);
   }
 }
+header {
+  background-color: #f04c4c;
+  color: #fff;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-bar input {
+  height: 30px;
+  width: 200px;
+  margin-right: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #666;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  background-color: #666;
+}
+
+.login button {
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #666;
+  color: #fff;
+  cursor: pointer;
+}
+
+.hamburger-menu button {
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #666;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* Button css */
+.button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
