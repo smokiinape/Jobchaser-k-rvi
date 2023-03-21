@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Buttons from './Buttons';
-import '../App.css';
+import '../../App.css';
 
 const SearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');

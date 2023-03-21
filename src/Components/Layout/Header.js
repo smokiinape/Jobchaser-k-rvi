@@ -1,7 +1,8 @@
 import React from 'react';
 import Buttons from '../Reusable/Buttons';
 import SearchBar from '../Reusable/SearchBar';
-import '../App.css';
+import '../../App.css';
+import KiwiLogo from '../images/kiwi.png';
 
 function Header() {
     const handleSearch = (searchTerm) => {
@@ -12,7 +13,7 @@ function Header() {
     return (
       <header>
         <nav>
-          <div className="logo">Logo</div>
+          <div className="logo"><img src={KiwiLogo} alt="Kiwi Logo"/></div>
           <div className="nav-links">
             <ul>
               <li><a href="#">hej</a></li>
