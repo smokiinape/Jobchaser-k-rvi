@@ -1,45 +1,40 @@
-// Den här filen ska ladda in  en lista jobb fetchad från en API eller en databas. 
-// Det kan vara en reusable component  som tar en array av jobb som en prop och renders varje jobb som en JobCard component
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchJobs } from '../store/jobSlice';
 import JobCard from './JobCard';
-//Importerar nödvändinga dependencies och komponenter
+
+const JobListAPI = () => {
+  const dispatch = useDispatch();
+  const jobs = useSelector((state) => state.job.jobs);
+
+  useEffect(() => {
+    dispatch(fetchJobs());
+  }, [dispatch]);
+
+  return (
+    <div>
+      {jobs.map((job) => (
+        <JobCard key={job.id} job={job} />
+      ))}
+    </div>
+  );
+};
+
+export default JobListAPI;
 
 
+/*
+We import React and the necessary hooks from react-redux and the fetchJobs action creator from the jobSlice.js file.
 
-const JobList = () => {
-    const url = "https://jobsearch.api.jobtechdev.se/search?q=";
-/* Skapade joblist functional komponent*/
+In our functional component, we use the useDispatch and useSelector hooks from react-redux to get a reference to the dispatch function and the jobs state from the Redux store.
 
-    const [jobs, setJobs] = useState([]);
-  /* deklarerar jobs state variabel med useState hooken */
-    useEffect(() => {
-      fetchJobs();
-    }, []);
-    /* Använder useEffect hooken för att fetcha job listings */
-  
-    const fetchJobs = async () => {
-      try {
-        // Replace this URL with the API URL for Arbetsförmedlingen
-        const response = await fetch('https://api.example.com/joblistings');
-        const data = await response.json();
-        setJobs(data.jobs);
-      } catch (error) {
-        console.error('Error fetching job data:', error);
-      }
-    };
-    /* Definerar 'fetchJobs' funktionen för att fetcha jobannonser från API och uppdatera 'jobs' variabeln */
-  
-    return (
-      <div>
-        {jobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
-      </div>
-    );
-    /* render fetched job listing med JobCard komponenten*/
-  };
-  
+We use the useEffect hook to fetch the job listings data from an API endpoint when the component mounts. 
+We call the fetchJobs action creator and pass the dispatch function as an argument to update the state in the Redux store.
 
-  export default JobList
+In the return statement, we use the jobs array to map over each job and pass it as a prop to the JobCard component. 
+The JobCard component is rendered for each job in the array.
 
-  //Kom ihåg att byta ut API url
+Finally, we export the JobList component as the default export of the module.
+
+
+*/
