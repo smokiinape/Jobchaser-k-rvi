@@ -4,9 +4,8 @@ It can include fields for email and password, as well as a submit button.
 */
 import { useState } from 'react';
 import Buttons from '../Reusable/Buttons';
-
-
-
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import { firebaseApp } from './firebase';
 
 function SignIn () {
 
@@ -14,6 +13,8 @@ function SignIn () {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     
+    const auth = getAuth(firebaseApp);
+
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -26,29 +27,16 @@ function SignIn () {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+      
         try {
-            const response = await fetch (' /api/signin', {
-              method: 'POST',
-              headers: {
-                'Content-Type':'application/json',
-              },
-              body: JSON.stringify({
-                email,
-                password,
-              }),
-            });
-
-            if (response.ok) {
-                // Handles successful sign-in
-            } else {
-                //Handles sign-in failure
-                setErrorMessage('Invalid email or password');
-            }
-        } catch (err) {
-            console.error(err);
-            setErrorMessage('An error occured');
-        }   
-    };
+          await signInWithEmailAndPassword(auth, email, password);
+          //handle succesful sign-in
+        } catch (error) {
+          // handle sign-in failure
+          setErrorMessage(error.message);
+        }
+      };
+  
 
     return (
      <form onSubmit={handleSubmit}>

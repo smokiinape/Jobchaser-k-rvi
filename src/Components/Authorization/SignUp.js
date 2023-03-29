@@ -1,8 +1,38 @@
-/* 
+import { useState } from 'react';
+import Buttons from '../Reusable/Buttons';
 
-Similar to the SignIn component, this component can be a form for users to sign up for your web app. 
-It can include fields for name, email, password, and any other relevant information you'd like to collect from new users.
+const SignUpForm ()  {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
 
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
 
-*/
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('sumbitting din email ${email} och din kod ${kod}');
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Email:
+                <input type="text" value={email} onChange={handleEmailChange} />
+            </label>
+            <br />
+            <label>
+                Password:
+                <input type="text" value={password} onChange={handlePasswordChange} />
+            </label>
+            <br />
+            <Buttons text="Sign Up" />
+        </form>
+    );
+}
+export default SignUpForm;

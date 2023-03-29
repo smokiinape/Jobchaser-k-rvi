@@ -7,13 +7,13 @@ Vi kan designa det på sett sätt så det är enkelt för Users att scanna igeno
 
 import React from "react";
 import { useDispatch } from 'react-redux';
-import { selectJob } from '.../store/jobSlice';
+import { fetchJobs, selectJob } from '../../store/jobSlice';
 
 export default function JobCard(props) {
     const dispatch = useDispatch(); /* Hookar jobcard komponenten för att få en referens till dispatch funktionen*/
 
     const handleClick = () => {
-        dispatch(selecJob(props));
+        dispatch(selectJob(props));
 
     };
 
@@ -24,7 +24,7 @@ export default function JobCard(props) {
                 <h2>{props.title}</h2>
             </div>
             <div className="JobCard--job--main">
-                <p>{props.description.substring(0, 200)}</p>
+            {props.description && <p>{props.description.substring(0, 200)}</p>}
                 <a href={props.linkUrl}>Gå till annonsen</a>
             </div>
         </div>
