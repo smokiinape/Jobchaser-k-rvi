@@ -1,11 +1,15 @@
 import React from "react"
+import JobListAPI from "../Jobs/JobListAPI"
+import GetJobData from "../Jobs/GetJobData";
 
-export default function Main() {
-
-
+const Main = () => {
     return (
         <main>
-            <p>MAIN SECTION</p>
+            <GetJobData />
+            
         </main>
-    )
+    );
 };
+
+
+export default Main;

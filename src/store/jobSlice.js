@@ -23,16 +23,17 @@ const jobSlice = createSlice ({
         //Lägg till andra reducers efter behov
     },
 });
-
+//27-35 i boken
 export const fetchJobs = () => async (dispatch) => {
     try {
-      const response = await fetch('https://api.example.com/joblistings');
+      const response = await fetch('https://jobsearch.api.jobtechdev.se/search');
       const data = await response.json();
-      dispatch(setJobs(data.jobs));
+      dispatch(setJobs(data.hits));
     } catch (error) {
       console.error('Error fetching job data:', error);
     }
   };
+  
   
 
 export const { setJobs, selectJob } = jobSlice.actions;
@@ -46,7 +47,7 @@ We import createSlice from @reduxjs/toolkit. We define the initial state with jo
 Then we create the job slice by calling createSlice with an object that includes the name, initialState, and reducers.
 
 The reducers property is an object containing reducer functions that can update the state. 
-In our example, we have two reducers: setJobs and selectJob. 
+Here, we have two reducers: setJobs and selectJob. 
 These reducers are automatically converted into actions that can be dispatched in the components.
 
 We export the actions by destructuring them from jobSlice.actions, 

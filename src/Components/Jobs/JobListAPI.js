@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchJobs } from '../store/jobSlice';
+import { setJobs } from '../../store/jobSlice';
 import JobCard from './JobCard';
 
 const JobListAPI = () => {
@@ -8,19 +9,43 @@ const JobListAPI = () => {
   const jobs = useSelector((state) => state.job.jobs);
 
   useEffect(() => {
-    dispatch(fetchJobs());
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('https://job-board-search-fastapply.p.rapidapi.com/us/snagajob/fetchjobs', {
+          keyword: 'analyst',
+          location: 'boston massachusetts',
+          radius: 15,
+          page_number: 1
+        }, {
+          headers: {
+            'content-type': 'application/json',
+            'X-RapidAPI-Key': 'a9ead00f06mshf124b808aca4f67p17cf5fjsn68d18abcaa31',
+            'X-RapidAPI-Host': 'job-board-search-fastapply.p.rapidapi.com'
+          }
+        });
+        dispatch(setJobs(response.data.jobs));
+        console.log('Response data:', response.data);
+setJobs(response.data.jobs);
+console.log('Jobs:', jobs);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, [dispatch]);
 
   return (
     <div>
       {jobs.map((job) => (
-        <JobCard key={job.id} job={job} />
+        <JobCard key={job.job_id} job={job} />
       ))}
     </div>
   );
 };
 
 export default JobListAPI;
+
 
 
 /*

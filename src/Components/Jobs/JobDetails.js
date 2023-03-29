@@ -6,6 +6,7 @@ Det kan inkludera en längre arbetsbeskrivning, krav, lön och ansökningsinstru
 
 import React from 'react';
 import { useSelector } from 'react-redux';
+import store from "./store/store"
 
 const JobDetails = () => {
   const selectedJob = useSelector((state) => state.job.selectedJob);
@@ -34,6 +35,8 @@ const JobDetails = () => {
     </div>
   );
 };
+
+console.log(store.getState());
 
 
 /* 
