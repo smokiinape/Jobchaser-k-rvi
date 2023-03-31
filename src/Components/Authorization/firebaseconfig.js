@@ -5,11 +5,10 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDc2yYGLzjzUjVC1c8dQ_a_rQZej8YWuok",
-  authDomain: "jobportal-e4514.firebaseapp.com",
-  projectId: "jobportal-e4514",
-  storageBucket: "jobportal-e4514.appspot.com",
-  messagingSenderId: "13634428003",
-  appId: "1:13634428003:web:6cbc9d8c37b465d2b72c56"
+  apiKey: "AIzaSyCc1fF9oWMDWiyoAJQZGVJBuywI8zMJfQY",
+  authDomain: "jobchaser-final.firebaseapp.com",
+  projectId: "jobchaser-final",
+  storageBucket: "jobchaser-final.appspot.com",
+  messagingSenderId: "617046787310",
+  appId: "1:617046787310:web:238aae2bac0eb703355fff"
 };
-
