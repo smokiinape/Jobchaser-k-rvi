@@ -12,7 +12,7 @@ function App () {
     <>
         <Header/>
         <Main />
-        <SignIn />
+        
         <Footer />
     </>
 

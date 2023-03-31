@@ -1,43 +1,29 @@
-/* 
-Similar to the SignIn component, this component can be a form for users to sign up for your web app. 
-It can include fields for name, email, password, and any other relevant information you'd like to collect from new users.
-*/
-import { useState } from 'react';
+import React from 'react';
+import { auth } from '../Authorization/firebase';
+import { signOut } from 'firebase/auth';
 import Buttons from '../Reusable/Buttons';
 
 function SignOut() {
-    const [errorMessage, setErrorMessage] = useState('');
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      // Handle a successful sign-out
+      console.log('User signed out');
+    } catch (error) {
+      // Handle a sign-out failure
+      console.error('Error signing out:', error);
+    }
+  };
 
-    const handleSignOut = async () => {
-        try {
-            const response = await fetch('/api/signout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            if (response.ok) {
-                // Handles a successful sign-out
-            } else {
-                //Handles a sign-out failure
-                setErrorMessage('Error signing out');
-            }
-        } catch (err) {
-            console.error(err);
-            setErrorMessage('An error occurred');
-        }
-    };
-
-    return (
-        <div>
-            <Buttons onClick={handleSignOut}>Sign out</Buttons>
-            {errorMessage && <p>{errorMessage}</p>}
-        </div>
-    );
+  return (
+    <div>
+      <Buttons onClick={handleSignOut}>Sign out</Buttons>
+    </div>
+  );
 }
 
 export default SignOut;
+
 
 /*1.import { useState } from 'react'; This line imports the useState hook from the React library, which allows us to define state variables in our functional components.
 
