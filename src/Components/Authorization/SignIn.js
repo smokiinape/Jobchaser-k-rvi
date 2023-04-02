@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Authorization/firebase';
 import { useDispatch } from 'react-redux';
 import { setUser, setError as setAuthError, clearError } from '../../store/slices/AuthSlice';
+import axios from 'axios';
+
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
+  
+  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -29,6 +34,7 @@ function SignIn() {
       setPassword('');
       setError('');
       dispatch(clearError());
+      setIsLoggedIn(true); 
       window.alert('You have succesfully signed in!')
     } catch (error) {
       console.error('Error during sign in:', error);
@@ -37,19 +43,21 @@ function SignIn() {
     }
   };
 
+  useEffect(() => {
+    // Lyssna på förändringar i isLoggedIn och omdirigera användaren till sin profil
+    if (isLoggedIn) {
+      window.location.href = '/profil'; // Ersätt med URL:n för användarens profil
+    }
+  }, [isLoggedIn]);
+
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <input type="text" value={email} onChange={handleEmailChange} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </label>
-      <br />
-      <button type="submit">Sign In</button>
+    <form className="singIn-form" onSubmit={handleSubmit}>
+        <label htmlFor="login-email">Email:</label>
+        <input id="login-email"type="text" value={email} onChange={handleEmailChange} />
+        <label htmlFor="login-password">Password:</label>
+        <input id="login-password" type="password" value={password} onChange={handlePasswordChange} />
+        <button type="submit">Sign In</button>
       {error && <p>{error}</p>}
     </form>
   );

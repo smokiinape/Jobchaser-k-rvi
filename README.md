@@ -1,3 +1,11 @@
+# TEAM KIWI
+
+## Jobchaser react app
+Denna app är en jobportal för att söka jobb. Den använder sig av en API från Arbetsförmedlingen för att ladda jobb, och man kan filtrera efter taggar såsom LIA, heltid, deltid, programmering, utomlands, m.m. Man kan också registrera sig som användare på hemsidan, vilket vi implementerat med hjälp av firebase. Man kan registrera sig samt logga in och firbase kommer minnas dina uppgifter.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
