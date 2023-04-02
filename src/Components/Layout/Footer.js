@@ -5,17 +5,15 @@ function Footer () {
     return (
         <footer>
             <div>
-                <h4>Adress:</h4>
-                <p>163 vi ser er.</p>
-                <p>Vi är överallt, Sverige</p>
+                <h4>TEAM KIWI</h4>
             </div>
             <div>
-                <h4>Nummer:</h4>
+                <h4>kontakta oss:</h4>
                 <p>(+47)77889910</p>
             </div>
             <div>
-                <h4>email:</h4>
-                <p>vivillintehamejl@tack.se</p>
+                <h4>Följ oss</h4>
+                <a href="https://github.com">Länk till Github</a>
             </div>
         </footer>
     );

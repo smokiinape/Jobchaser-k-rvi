@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUser, setError as setAuthError, clearError } from '../../store/slices/AuthSlice';
 
+
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +25,11 @@ const SignUpForm = () => {
       return;
     }
 
+
+    if (!email) {
+      window.alert('Email is required');
+      return;
+    }
     try {
       const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCc1fF9oWMDWiyoAJQZGVJBuywI8zMJfQY', {
         email,
